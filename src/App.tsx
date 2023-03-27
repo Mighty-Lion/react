@@ -14,9 +14,7 @@ export function App() {
 export function WrappedApp() {
   return (
     <Router>
-      <div>
-        <App />
-      </div>
+      <App />
     </Router>
   );
 }
