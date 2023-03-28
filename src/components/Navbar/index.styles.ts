@@ -6,7 +6,6 @@ export const NavbarWrapper = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  padding: 0 40px;
   width: 100%;
   background: gray;
 `;
@@ -17,6 +16,7 @@ export const NavbarList = styled.div`
   justify-items: center;
   align-items: center;
   grid-gap: 10px;
+	padding: 10px 0;
 `;
 
 export const NavbarListLink = styled(Link)`

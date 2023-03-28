@@ -17,6 +17,11 @@ const NotFoundButton = styled(Link)`
     background: #9a9ff9;
     color: #e6e5f2;
   }
+
+  &:active {
+    background: lightblue;
+    color: white;
+  }
 `;
 function NotFound() {
   return (
