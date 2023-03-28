@@ -7,7 +7,6 @@ export function App() {
   return (
     <Routes>
       {/* eslint-disable-next-line react/no-unknown-property */}
-      <div></div>
       <Route path="/" element={<Home />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -17,7 +16,7 @@ export function App() {
 export function WrappedApp() {
   return (
     <Router>
-      <Container>
+      <Container css  >
         <App />
       </Container>
     </Router>
