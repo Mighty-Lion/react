@@ -8,7 +8,7 @@ export const Container = styled.section`
   margin-left: auto;
   position: relative;
   padding-left: 20px;
-	padding-right: 20px;
+  padding-right: 20px;
 
   @media (max-width: ${getBreakpoint('TABLET_M', 'down')}) {
     padding-left: 10px;
