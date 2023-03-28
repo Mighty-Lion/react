@@ -1,4 +1,4 @@
-enum Breakpoints {
+enum Breakpoinst {
   'MOBILE_S' = 360,
   'MOBILE_M' = 375,
   'MOBILE_L' = 480,
@@ -13,13 +13,13 @@ enum Breakpoints {
 }
 type TBreakpointType = 'up' | 'down';
 
-type TBreakpointSizes = keyof typeof Breakpoints;
+type TBreakpointSizes = keyof typeof Breakpoinst;
 
 export function getBreakpoint(
   size: TBreakpointSizes,
   type: TBreakpointType = 'up'
 ): string {
-  const output = type === 'up' ? Breakpoints[size] : Breakpoints[size] - 1;
+  const output = type === 'up' ? Breakpoinst[size] : Breakpoinst[size] - 1;
   return `${output}px`;
 }
 
@@ -27,7 +27,7 @@ export function getBreakpointNumber(
   size: TBreakpointSizes,
   type: TBreakpointType = 'up'
 ): number {
-  const output = type === 'up' ? Breakpoints[size] : Breakpoints[size] - 1;
+  const output = type === 'up' ? Breakpoinst[size] : Breakpoinst[size] - 1;
 
   return output;
 }

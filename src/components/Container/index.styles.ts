@@ -7,13 +7,16 @@ export const Container = styled.section`
   margin-right: auto;
   margin-left: auto;
   position: relative;
-  padding: 0 20px;
+  padding-left: 20px;
+	padding-right: 20px;
 
   @media (max-width: ${getBreakpoint('TABLET_M', 'down')}) {
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   @media (max-width: ${getBreakpoint('MOBILE_M', 'down')}) {
-    padding: 0 5px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `;

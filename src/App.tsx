@@ -2,11 +2,11 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import { Container } from './components/Container/index.styles';
+import { Navbar } from './components/Navbar';
 
 export function App() {
   return (
     <Routes>
-      {/* eslint-disable-next-line react/no-unknown-property */}
       <Route path="/" element={<Home />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -16,9 +16,7 @@ export function App() {
 export function WrappedApp() {
   return (
     <Router>
-      <Container css  >
-        <App />
-      </Container>
+      <App />
     </Router>
   );
 }
