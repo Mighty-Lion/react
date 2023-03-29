@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import {Link, NavLink} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line import/prefer-default-export
 export const NavbarWrapper = styled.nav`

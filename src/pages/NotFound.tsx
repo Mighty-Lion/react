@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 const NotFoundButton = styled(Link)`
   display: flex;
@@ -26,7 +27,13 @@ const NotFoundButton = styled(Link)`
 function NotFound() {
   return (
     <>
-      <h1>Not Found</h1>
+      <h1
+        className={css`
+          margin-bottom: 20px;
+        `}
+      >
+        Not Found
+      </h1>
       <NotFoundButton to="/">Go Home</NotFoundButton>
     </>
   );

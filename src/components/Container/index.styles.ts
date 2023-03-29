@@ -22,5 +22,5 @@ export const Container = styled.section`
 `;
 
 export const ContentWrapper = styled(Container)`
-  padding-top: 40px;
+  padding-top: 50px;
 `;
