@@ -1,7 +1,6 @@
 import { Routes, Route, Link } from 'react-router-dom';
-import { css } from '@emotion/css';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
+import Home from './pages/Home/index';
+import NotFound from './pages/NotFound/index';
 import { ContentWrapper } from './components/Container/index.styles';
 import { Navbar } from './components/Navbar';
 
