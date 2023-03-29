@@ -20,3 +20,7 @@ export const Container = styled.section`
     padding-right: 5px;
   }
 `;
+
+export const ContentWrapper = styled(Container)`
+  padding-top: 40px;
+`;

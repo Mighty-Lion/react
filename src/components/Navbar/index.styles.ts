@@ -7,7 +7,7 @@ export const NavbarWrapper = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  background: gray;
+  background: #e5eceb;
   z-index: 100;
 `;
 
