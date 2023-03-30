@@ -60,17 +60,18 @@ const carsArray = [
   },
 ];
 
-const renderedCarItems = carsArray.map((item) => (
-  <Car
-    key={item.id}
-    id={item.id}
-    imgSrc={item.imgSrc}
-    name={item.name}
-    year={item.year}
-    country={item.country}
-  />
-));
-
+// eslint-disable-next-line import/prefer-default-export
 export function Cars() {
+  const renderedCarItems = carsArray.map((item) => (
+    <Car
+      key={item.id}
+      id={item.id}
+      imgSrc={item.imgSrc}
+      name={item.name}
+      year={item.year}
+      country={item.country}
+    />
+  ));
+
   return <CarsWrapper>{renderedCarItems}</CarsWrapper>;
 }
