@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
 import { getBreakpoint } from '../../Breakpoinst';
 
-export const Container = styled.section`
+export const Wrapper = styled.div`
+  width: 100vw;
+`;
+export const Container = styled.div`
   max-width: 1220px;
   width: 100%;
   margin-right: auto;

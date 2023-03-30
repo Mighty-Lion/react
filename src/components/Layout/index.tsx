@@ -1,14 +1,12 @@
 import { PropsWithChildren } from 'react';
 import { Navbar } from '../Navbar';
-import { ContentWrapper } from './index.styles';
+import { ContentWrapper, Wrapper } from './index.styles';
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <>
+    <Wrapper>
       <Navbar />
-      <main>
-        <ContentWrapper as="main">{children}</ContentWrapper>
-      </main>
-    </>
+      <ContentWrapper as="main">{children}</ContentWrapper>
+    </Wrapper>
   );
 }
