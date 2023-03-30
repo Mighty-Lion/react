@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line import/prefer-default-export
-export const NavbarWrapper = styled.nav`
+export const NavbarWrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +10,7 @@ export const NavbarWrapper = styled.nav`
   z-index: 100;
 `;
 
-export const NavbarList = styled.div`
+export const NavbarList = styled.nav`
   display: grid;
   grid-auto-flow: column;
   justify-items: center;

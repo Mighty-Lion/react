@@ -1,8 +1,7 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/index';
 import NotFound from './pages/NotFound/index';
-import { ContentWrapper } from './components/Container/index.styles';
-import { Navbar } from './components/Navbar';
+import Layout from './components/Layout';
 
 export function App() {
   return (
@@ -15,11 +14,8 @@ export function App() {
 
 export function WrappedApp() {
   return (
-    <>
-      <Navbar />
-      <ContentWrapper>
-        <App />
-      </ContentWrapper>
-    </>
+    <Layout>
+      <App />
+    </Layout>
   );
 }

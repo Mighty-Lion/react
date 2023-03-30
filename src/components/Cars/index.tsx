@@ -1,5 +1,5 @@
 import { CarsWrapper } from './index.styles';
-import { CarsCardContainer } from './partials/CarsCard';
+import { Car } from './partials/CarsCard';
 
 const carsArray = [
   {
@@ -54,7 +54,7 @@ const carsArray = [
 ];
 
 const renderedCarItems = carsArray.map((item) => (
-  <CarsCardContainer
+  <Car
     key={item.id}
     id={item.id}
     imgSrc={item.imgSrc}

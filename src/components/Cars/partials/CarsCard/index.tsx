@@ -13,7 +13,7 @@ interface ICarsCardProps {
   year: string;
   country: string;
 }
-export function CarsCardContainer({
+export function Car({
   id,
   imgSrc,
   name,
