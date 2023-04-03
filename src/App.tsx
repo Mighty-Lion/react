@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/index';
 import NotFound from './pages/NotFound/index';
 import Layout from './components/Layout';
+import { ModalState } from '@/context/ModalContext';
 
 export function App() {
   return (
@@ -14,8 +15,10 @@ export function App() {
 
 export function WrappedApp() {
   return (
-    <Layout>
-      <App />
-    </Layout>
+    <ModalState>
+      <Layout>
+        <App />
+      </Layout>
+    </ModalState>
   );
 }
