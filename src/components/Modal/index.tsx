@@ -1,20 +1,32 @@
-import { PropsWithChildren, useContext, useState } from 'react';
-import ModalWindow from '@/components/Modal/partials';
+import { PropsWithChildren, ReactNode } from 'react';
 import {
   ModalContent,
   ModalWrapper,
 } from '@/components/Modal/partials/index.styles';
-import { ModalContext } from '@/context/ModalContext';
+import { useModalController } from '@/hooks/useModalController';
 
-export function Modal({ children }: PropsWithChildren) {
+export interface IModalProps {
+  content: PropsWithChildren;
+  isOpen: boolean;
+  close: () => void;
+}
+
+export function Modal({ content, isOpen, close }: IModalProps) {
   console.log('Modal');
-  const { modal, open, close } = useContext(ModalContext);
+  let modal = <></>;
+  if (isOpen === true) {
+    modal = (
+      <ModalWrapper onClick={close}>
+        <ModalContent
+          onClick={(e) => e.stopPropagation()}
+        >
+          {content}
+        </ModalContent>
+      </ModalWrapper>
+    );
+  } else {
+    modal = <></>;
+  }
 
-  return (
-    <ModalWrapper onClick={() => close()}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
-        {children}
-      </ModalContent>
-    </ModalWrapper>
-  );
+  return <>{modal}</>;
 }

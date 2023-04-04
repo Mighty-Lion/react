@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { css } from '@emotion/css';
 import { CarsWrapper } from './index.styles';
 import { Car } from './partials/CarsCard';
 import Bmw from '@/assets/images/bmw_e34.jpg';
@@ -11,7 +12,11 @@ import Porsche911 from '@/assets/images/porsche_911.jpg';
 import { AddButton } from '@/components/Cars/partials/Button/index.styles';
 import { Modal } from '@/components/Modal';
 import { CreateCard } from '@/components/CreateCard';
-import { ModalContext } from '@/context/ModalContext';
+import { useModalController } from '@/hooks/useModalController';
+import {
+  ModalContent,
+  ModalWrapper,
+} from '@/components/Modal/partials/index.styles';
 
 const carsArray = [
   {
@@ -65,29 +70,31 @@ const carsArray = [
   },
 ];
 
-// eslint-disable-next-line import/prefer-default-export
+const renderedCarItems = carsArray.map((item) => (
+  <Car
+    key={item.id}
+    id={item.id}
+    imgSrc={item.imgSrc}
+    name={item.name}
+    year={item.year}
+    country={item.country}
+  />
+));
+
 export function Cars() {
-  const { modal, open, close } = useContext(ModalContext);
-  const renderedCarItems = carsArray.map((item) => (
-    <Car
-      key={item.id}
-      id={item.id}
-      imgSrc={item.imgSrc}
-      name={item.name}
-      year={item.year}
-      country={item.country}
-    />
-  ));
+  const createCardModal = useModalController();
 
   return (
     <CarsWrapper>
       {renderedCarItems}
-      {modal && (
-        <Modal>
-          <CreateCard />
-        </Modal>
-      )}
-      <AddButton onClick={() => open()}>+</AddButton>
+
+      <Modal
+        content={<CreateCard close={createCardModal.close} />}
+        isOpen={createCardModal.isOpen}
+        close={createCardModal.close}
+      />
+
+      <AddButton onClick={createCardModal.open}>+</AddButton>
     </CarsWrapper>
   );
 }

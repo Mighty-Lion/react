@@ -14,6 +14,7 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalContent = styled.div`
+  z-index: 9999;
   padding: 20px;
   width: 400px;
   height: 400px;
