@@ -1,22 +1,15 @@
 import { useCallback, useState } from 'react';
 
-
 export function useModalController() {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  let toggle = useCallback(() => setIsOpen((prev) => !prev), []);
-  let open = useCallback(() => {
-    console.log('open');
-    // console.log({ isOpen });
+  const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
+  const open = useCallback(() => {
     setIsOpen(true);
-    console.log({ isOpen });
-  }, [isOpen, setIsOpen]);
-  let close = useCallback(() => {
-    console.log('close');
-    // console.log({ isOpen });
+  }, [setIsOpen]);
+  const close = useCallback(() => {
     setIsOpen(false);
-    console.log({ isOpen });
-  }, [isOpen, setIsOpen]);
+  }, [setIsOpen]);
 
   return {
     isOpen,

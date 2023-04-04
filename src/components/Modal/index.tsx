@@ -1,32 +1,30 @@
-import { PropsWithChildren, ReactNode } from 'react';
 import {
-  ModalContent,
+  ModalClose,
+  ModalContainer,
   ModalWrapper,
-} from '@/components/Modal/partials/index.styles';
-import { useModalController } from '@/hooks/useModalController';
+} from '@/components/Modal/index.styles';
+import { CreateCard } from '@/components/CreateCard';
+import { ModalContent } from '@/components/Modal/partials/ModalContent';
 
 export interface IModalProps {
-  content: PropsWithChildren;
+  title: string;
   isOpen: boolean;
   close: () => void;
 }
 
-export function Modal({ content, isOpen, close }: IModalProps) {
-  console.log('Modal');
-  let modal = <></>;
-  if (isOpen === true) {
-    modal = (
+export function Modal({ title, isOpen, close }: IModalProps) {
+  if (isOpen) {
+    return (
       <ModalWrapper onClick={close}>
-        <ModalContent
-          onClick={(e) => e.stopPropagation()}
-        >
-          {content}
-        </ModalContent>
+        <ModalContainer onClick={(e) => e.stopPropagation()}>
+          <ModalClose onClick={close}>X</ModalClose>
+          <ModalContent title={title}>
+            <CreateCard />
+          </ModalContent>
+        </ModalContainer>
       </ModalWrapper>
     );
-  } else {
-    modal = <></>;
   }
 
-  return <>{modal}</>;
+  return <></>;
 }

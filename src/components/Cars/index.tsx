@@ -1,5 +1,3 @@
-import { useContext, useState } from 'react';
-import { css } from '@emotion/css';
 import { CarsWrapper } from './index.styles';
 import { Car } from './partials/CarsCard';
 import Bmw from '@/assets/images/bmw_e34.jpg';
@@ -11,12 +9,7 @@ import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
 import Porsche911 from '@/assets/images/porsche_911.jpg';
 import { AddButton } from '@/components/Cars/partials/Button/index.styles';
 import { Modal } from '@/components/Modal';
-import { CreateCard } from '@/components/CreateCard';
 import { useModalController } from '@/hooks/useModalController';
-import {
-  ModalContent,
-  ModalWrapper,
-} from '@/components/Modal/partials/index.styles';
 
 const carsArray = [
   {
@@ -87,13 +80,11 @@ export function Cars() {
   return (
     <CarsWrapper>
       {renderedCarItems}
-
       <Modal
-        content={<CreateCard close={createCardModal.close} />}
         isOpen={createCardModal.isOpen}
         close={createCardModal.close}
+        title="Title"
       />
-
       <AddButton onClick={createCardModal.open}>+</AddButton>
     </CarsWrapper>
   );
