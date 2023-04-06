@@ -7,7 +7,8 @@ import McLarenP1 from '@/assets/images/mclaren_p1.jpg';
 import MercedesBenzSClassW222 from '@/assets/images/mercedesbenz_sclass_w222.jpg';
 import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
 import Porsche911 from '@/assets/images/porsche_911.jpg';
-import { AddButton } from '@/components/Cars/partials/Button/index.styles';
+import plusSvg from '@/assets/images/plus.svg';
+import {AddButton, AddButtonImg} from '@/components/Cars/partials/Button/index.styles';
 import { Modal } from '@/components/Modal';
 import { useModalController } from '@/hooks/useModalController';
 
@@ -85,7 +86,9 @@ export function Cars() {
         close={createCardModal.close}
         title="Title"
       />
-      <AddButton onClick={createCardModal.open}>+</AddButton>
+      <AddButton onClick={createCardModal.open}>
+        <AddButtonImg src={plusSvg} alt="" />
+      </AddButton>
     </CarsWrapper>
   );
 }

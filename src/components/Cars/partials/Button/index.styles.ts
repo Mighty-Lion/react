@@ -2,16 +2,25 @@ import styled from '@emotion/styled';
 
 export const AddButton = styled.div`
   position: fixed;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: yellow;
+  bottom: 5px;
+  right: 5px;
+  width: 3em;
+  height: 3em;
+  background: lightcyan;
   border: none;
   border-radius: 50%;
-  font-size: 20px;
-	cursor: pointer;
+  cursor: pointer;
+  transition: 0.4s all;
+  &:hover {
+    background: #70dafb;
+  }
+
+  &:active {
+    background: #8788fb;
+  }
+`;
+
+export const AddButtonImg = styled.img`
+  width: 100%;
+  height: 100%;
 `;
