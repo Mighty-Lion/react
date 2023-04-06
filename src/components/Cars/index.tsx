@@ -87,7 +87,7 @@ export function Cars() {
         title="Title"
       />
       <AddButton onClick={createCardModal.open}>
-        <AddButtonImg src={plusSvg} alt="" />
+        <AddButtonImg src={plusSvg} alt="plus svg" />
       </AddButton>
     </CarsWrapper>
   );

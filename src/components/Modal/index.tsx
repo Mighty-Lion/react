@@ -19,7 +19,7 @@ export function Modal({ title, isOpen, close }: IModalProps) {
       <ModalWrapper onClick={close}>
         <ModalContainer onClick={(e) => e.stopPropagation()}>
           <ModalClose onClick={close}>
-            <img src={closeSvg} alt="" />
+            <img src={closeSvg} alt="close img" />
           </ModalClose>
           <ModalContent title={title}>
             <CreateCard />

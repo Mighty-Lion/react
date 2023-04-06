@@ -1,27 +1,46 @@
-import {Formik, Field, Form, validateYupSchema} from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
+import {
+  CreateCardButton,
+  CreateCardErrorMessage,
+  CreateCardField,
+  CreateCardFieldWrapper,
+  CreateCardForm,
+  CreateCardLabel,
+} from '@/components/CreateCard/index.styles';
 
 const SignupSchema = Yup.object().shape({
-  firstName: Yup.string()
+  website: Yup.string()
+    .matches(
+      /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+      'Enter correct url!'
+    )
+    .required('Please enter website'),
+  name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
-  lastName: Yup.string()
+    .matches(/^[A-Za-z0-9 ]*$/, 'Please enter valid name')
+    .required('Enter correct name!'),
+  year: Yup.string()
+    .min(4, 'Too Short!')
+    .max(4, 'Too Long!')
+    .matches(/^[0-9 ]*$/, 'Please enter valid year')
+    .required('Enter correct year!'),
+  country: Yup.string()
     .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
+    .max(15, 'Too Long!')
+    .required('Enter correct name!'),
 });
 
-export function ValidationSchemaExample() {
+export function CreateCard() {
   return (
     <div>
-      <h1>Signup</h1>
       <Formik
         initialValues={{
-          firstName: '',
-          lastName: '',
-          email: '',
+          website: '',
+          name: '',
+          year: '',
+          country: '',
         }}
         validationSchema={SignupSchema}
         onSubmit={(values) => {
@@ -30,43 +49,47 @@ export function ValidationSchemaExample() {
         }}
       >
         {({ errors, touched }) => (
-          <Form>
-            <Field name="firstName" />
-            {errors.firstName && touched.firstName ? (
-              <div>{errors.firstName}</div>
-            ) : null}
-            <Field name="lastName" />
-            {errors.lastName && touched.lastName ? (
-              <div>{errors.lastName}</div>
-            ) : null}
-            <Field name="email" type="email" />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <button type="submit">Submit</button>
-          </Form>
+          <CreateCardForm>
+            <CreateCardLabel htmlFor="url">Enter image url </CreateCardLabel>
+            <CreateCardFieldWrapper>
+              <CreateCardField id="url" name="website" />
+              {errors.website && touched.website ? (
+                <CreateCardErrorMessage>
+                  {errors.website}
+                </CreateCardErrorMessage>
+              ) : null}
+            </CreateCardFieldWrapper>
+
+            <CreateCardLabel htmlFor="name">Enter Name</CreateCardLabel>
+            <CreateCardFieldWrapper>
+              <CreateCardField id="name" name="name" />
+              {errors.name && touched.name ? (
+                <CreateCardErrorMessage>{errors.name}</CreateCardErrorMessage>
+              ) : null}
+            </CreateCardFieldWrapper>
+
+            <CreateCardLabel htmlFor="year">Enter year</CreateCardLabel>
+            <CreateCardFieldWrapper>
+              <CreateCardField id="year" name="year" />
+              {errors.year && touched.year ? (
+                <CreateCardErrorMessage>{errors.year}</CreateCardErrorMessage>
+              ) : null}
+            </CreateCardFieldWrapper>
+
+            <CreateCardLabel htmlFor="country">Enter country</CreateCardLabel>
+            <CreateCardFieldWrapper>
+              <CreateCardField id="country" name="country" />
+              {errors.country && touched.country ? (
+                <CreateCardErrorMessage>
+                  {errors.country}
+                </CreateCardErrorMessage>
+              ) : null}
+            </CreateCardFieldWrapper>
+
+            <CreateCardButton type="submit">Submit</CreateCardButton>
+          </CreateCardForm>
         )}
       </Formik>
     </div>
   );
 }
-export function CreateCard() {
-  return (
-    // {ValidationSchemaExample}
-    <form action="">
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, cumque
-        delectus deserunt dicta eos incidunt laboriosam laborum molestias,
-        praesentium qui quia quo voluptatem. Amet aperiam delectus dolorum
-        facilis magnam nam.
-      </div>
-      <div>
-        Accusantium animi beatae culpa cupiditate debitis delectus dicta
-        doloremque earum enim eos explicabo ipsum nostrum nulla officia optio,
-        pariatur perferendis perspiciatis porro possimus quam quis sequi sunt
-        tempore ullam, unde.
-      </div>
-    </form>
-  );
-}
-
-console.log('Formik');
-console.log(ValidationSchemaExample);
