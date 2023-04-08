@@ -1,5 +1,6 @@
+import { useCallback, useState } from 'react';
 import { CarsWrapper } from './index.styles';
-import { Car } from './partials/CarsCard';
+import { Car, ICarsCardProps } from './partials/CarsCard';
 import Bmw from '@/assets/images/bmw_e34.jpg';
 import HondaS200 from '@/assets/images/honda_s2000.jpg';
 import LamborghiniAventador from '@/assets/images/lamborghini_aventado.jpg';
@@ -8,7 +9,10 @@ import MercedesBenzSClassW222 from '@/assets/images/mercedesbenz_sclass_w222.jpg
 import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
 import Porsche911 from '@/assets/images/porsche_911.jpg';
 import plusSvg from '@/assets/images/plus.svg';
-import {AddButton, AddButtonImg} from '@/components/Cars/partials/Button/index.styles';
+import {
+  AddButton,
+  AddButtonImg,
+} from '@/components/Cars/partials/Button/index.styles';
 import { Modal } from '@/components/Modal';
 import { useModalController } from '@/hooks/useModalController';
 
@@ -63,6 +67,16 @@ const carsArray = [
     country: 'Германия',
   },
 ];
+
+export function useAddElement() {
+  const [theArray, setTheArray] = useState(carsArray);
+
+  const add = useCallback((newValue: ICarsCardProps) => {
+    setTheArray((oldArray) => [...oldArray, newValue]);
+  }, []);
+
+  return { add, theArray };
+}
 
 const renderedCarItems = carsArray.map((item) => (
   <Car

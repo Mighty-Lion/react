@@ -1,16 +1,15 @@
-import { Field, Form } from 'formik';
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
 
-export const CreateCardForm = styled(Form)`
+interface IValidStylesProps {
+  isValid: boolean | string | undefined | null;
+}
+export const CreateCardForm = styled.form`
   position: relative;
   display: grid;
   grid-gap: 7px;
 `;
 
 export const CreateCardLabel = styled.label`
-  display: grid;
-  grid-gap: 5px;
   color: #646cff;
 `;
 
@@ -20,13 +19,14 @@ export const CreateCardFieldWrapper = styled.div`
   width: 100%;
 `;
 
-export const CreateCardField = styled(Field)`
+export const CreateCardField = styled.input<IValidStylesProps>`
   position: absolute;
   top: 0;
   left: 0;
   height: 25px;
   width: 100%;
-  border: 1px solid #646cff;
+  border: 1px solid ${({ isValid }) => (isValid ? 'green' : 'red')};
+  border-radius: 3px;
 `;
 
 export const CreateCardErrorMessage = styled.div`
