@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 interface IValidStylesProps {
-  isValid: boolean | string | undefined | null;
+  isValid: boolean;
 }
 export const CreateCardForm = styled.form`
   position: relative;

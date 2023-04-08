@@ -10,7 +10,7 @@ export const SignupSchema = Yup.object().shape({
       /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
       'Enter correct url!'
     )
-    .required('Please enter website'),
+    .required('Please enter image URL'),
   name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')

@@ -68,7 +68,12 @@ const carsArray = [
   },
 ];
 
-export function useAddElement() {
+
+interface IUseAddElementProps {
+  add: () => void;
+  theArray: [];
+}
+export function useAddElement<IUseAddElementProps>() {
   const [theArray, setTheArray] = useState(carsArray);
 
   const add = useCallback((newValue: ICarsCardProps) => {
