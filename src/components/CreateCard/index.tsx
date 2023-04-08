@@ -9,66 +9,6 @@ import {
 } from '@/components/CreateCard/index.styles';
 import { useCreateCard } from './useCreateCard';
 
-// export function CreateCard() {
-//   return (
-//     <div>
-//       <Formik
-//         initialValues={{
-//           imgSrc: '',
-//           name: '',
-//           year: '',
-//           country: '',
-//         }}
-//         validationSchema={SignupSchema}
-//         onSubmit={(values) => {
-//           // same shape as initial values
-//           console.log(values);
-//         }}
-//       >
-//         {({ errors, touched }) => (
-//           <CreateCardForm>
-//             <CreateCardLabel htmlFor="url">Enter image url </CreateCardLabel>
-//             <CreateCardFieldWrapper>
-//               <CreateCardField id="url" name="imgSrc" />
-//               {errors.imgSrc && touched.imgSrc ? (
-//                 <CreateCardErrorMessage>{errors.imgSrc}</CreateCardErrorMessage>
-//               ) : null}
-//             </CreateCardFieldWrapper>
-//
-//             <CreateCardLabel htmlFor="name">Enter Name</CreateCardLabel>
-//             <CreateCardFieldWrapper>
-//               <CreateCardField id="name" name="name" />
-//               {errors.name && touched.name ? (
-//                 <CreateCardErrorMessage>{errors.name}</CreateCardErrorMessage>
-//               ) : null}
-//             </CreateCardFieldWrapper>
-//
-//             <CreateCardLabel htmlFor="year">Enter year</CreateCardLabel>
-//             <CreateCardFieldWrapper>
-//               <CreateCardField id="year" name="year" />
-//               {errors.year && touched.year ? (
-//                 <CreateCardErrorMessage>{errors.year}</CreateCardErrorMessage>
-//               ) : null}
-//             </CreateCardFieldWrapper>
-//
-//             <CreateCardLabel htmlFor="country">Enter country</CreateCardLabel>
-//             <CreateCardFieldWrapper>
-//               <CreateCardField id="country" name="country" />
-//               {errors.country && touched.country ? (
-//                 <CreateCardErrorMessage>
-//                   {errors.country}
-//                 </CreateCardErrorMessage>
-//               ) : null}
-//             </CreateCardFieldWrapper>
-//
-//             <CreateCardButton type="submit">Submit</CreateCardButton>
-//           </CreateCardForm>
-//         )}
-//       </Formik>
-//     </div>
-//   );
-// }
-
 export function CreateCard() {
   const form = useCreateCard();
 
