@@ -12,7 +12,6 @@ import { useCreateCard } from './useCreateCard';
 export function CreateCard() {
   const form = useCreateCard();
 
-  console.log(form.formik.touched);
   return (
     <CreateCardForm onSubmit={form.formik.handleSubmit}>
       <CreateCardLabel htmlFor="imgSrc">Enter image url </CreateCardLabel>
