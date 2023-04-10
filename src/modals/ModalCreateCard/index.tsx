@@ -1,6 +1,6 @@
-import { Modal } from '@/modals/Modal';
+import { Modal } from '@/components/Modal';
 import { CreateCard } from '@/components/CreateCard';
-import { IAddElementProps } from '@/components/ModalCreateCard/useAddElement';
+import { IAddElementProps } from '@/modals/ModalCreateCard/useAddElement';
 
 export function ModalCreateCard({
   title,

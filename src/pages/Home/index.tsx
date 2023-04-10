@@ -12,13 +12,13 @@ import {
   AddButtonImg,
 } from '@/pages/Home/partials/Button/index.styles';
 import { useModalController } from '@/hooks/useModalController';
-import { ModalCreateCard } from '@/components/ModalCreateCard';
+import { ModalCreateCard } from '@/modals/ModalCreateCard';
 import { Car } from '@/pages/Home/partials/CarsCard';
 import { CarsWrapper } from '@/pages/Home/index.styles';
 import {
   carsArray,
   useAddElement,
-} from '@/components/ModalCreateCard/useAddElement';
+} from '@/modals/ModalCreateCard/useAddElement';
 
 const renderedCarItems = carsArray.map((item) => (
   <Car

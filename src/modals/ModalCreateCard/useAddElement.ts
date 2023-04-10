@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IModalProps } from '@/modals/Modal';
+import { IModalProps } from '@/components/Modal';
 import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
 import Bmw from '@/assets/images/bmw_e34.jpg';
 import HondaS200 from '@/assets/images/honda_s2000.jpg';

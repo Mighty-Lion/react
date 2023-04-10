@@ -8,7 +8,7 @@ import {
   CreateCardLabel,
 } from '@/components/CreateCard/index.styles';
 import { useCreateCard } from './useCreateCard';
-import { IAddElementProps } from '@/components/ModalCreateCard/useAddElement';
+import { IAddElementProps } from '@/modals/ModalCreateCard/useAddElement';
 
 export function CreateCard({ addValue }: IAddElementProps) {
   const { formik } = useCreateCard();
