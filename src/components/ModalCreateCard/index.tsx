@@ -1,8 +1,8 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { IModalProps, Modal } from '@/modals/Modal';
+import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
 import { CreateCard } from '@/components/CreateCard';
-import { ICarsCardProps } from '@/components/Cars/partials/CarsCard';
-import { carsArray } from '@/components/Cars';
+import { carsArray } from '@/pages/Home';
 
 export interface IModalCreateCardProps extends IModalProps {
   newValue?: ICarsCardProps;
