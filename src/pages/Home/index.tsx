@@ -1,10 +1,3 @@
-import Bmw from '@/assets/images/bmw_e34.jpg';
-import HondaS200 from '@/assets/images/honda_s2000.jpg';
-import LamborghiniAventador from '@/assets/images/lamborghini_aventado.jpg';
-import McLarenP1 from '@/assets/images/mclaren_p1.jpg';
-import MercedesBenzSClassW222 from '@/assets/images/mercedesbenz_sclass_w222.jpg';
-import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
-import Porsche911 from '@/assets/images/porsche_911.jpg';
 import plusSvg from '@/assets/images/plus.svg';
 
 import {
@@ -30,20 +23,20 @@ const renderedCarItems = carsArray.map((item) => (
   />
 ));
 
-export default function Index() {
-  const createCardModal = useModalController();
-  const createNewCard = useAddElement();
+export default function Home() {
+  const { isOpen, open, close } = useModalController();
+  const { addValue } = useAddElement();
 
   return (
     <CarsWrapper>
       {renderedCarItems}
       <ModalCreateCard
-        isOpen={createCardModal.isOpen}
-        close={createCardModal.close}
+        isOpen={isOpen}
+        close={close}
         title="Title"
-        addValue={createNewCard.addValue}
+        addValue={addValue}
       />
-      <AddButton onClick={createCardModal.open}>
+      <AddButton onClick={open}>
         <AddButtonImg src={plusSvg} alt="plus svg" />
       </AddButton>
     </CarsWrapper>
