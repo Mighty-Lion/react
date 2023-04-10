@@ -8,10 +8,11 @@ import {
   CreateCardLabel,
 } from '@/components/CreateCard/index.styles';
 import { useCreateCard } from './useCreateCard';
+import { IModalCreateCardProps } from '@/components/ModalCreateCard';
 
-export function CreateCard() {
+export function CreateCard({ addValue }: IModalCreateCardProps) {
   const form = useCreateCard();
-
+  console.log(form.formik.values);
   return (
     <CreateCardForm onSubmit={form.formik.handleSubmit}>
       <CreateCardLabel htmlFor="imgSrc">Enter image url </CreateCardLabel>

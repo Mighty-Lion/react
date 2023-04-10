@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import exp from 'constants';
+import { IModalCreateCardProps } from '@/components/ModalCreateCard';
 
 export const SignupSchema = Yup.object().shape({
   imgSrc: Yup.string()
@@ -39,6 +40,7 @@ export function useCreateCard() {
     validationSchema: SignupSchema,
     onSubmit: (values) => {
       console.log(values);
+
     },
   });
 

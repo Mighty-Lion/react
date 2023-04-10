@@ -1,4 +1,3 @@
-import { useCallback, useState } from 'react';
 import { CarsWrapper } from './index.styles';
 import { Car, ICarsCardProps } from './partials/CarsCard';
 import Bmw from '@/assets/images/bmw_e34.jpg';
@@ -13,54 +12,47 @@ import {
   AddButton,
   AddButtonImg,
 } from '@/components/Cars/partials/Button/index.styles';
-import { Modal } from '@/components/Modal';
 import { useModalController } from '@/hooks/useModalController';
+import { ModalCreateCard, useAddElement } from '@/components/ModalCreateCard';
 
-const carsArray = [
+export const carsArray = [
   {
-    id: '1',
     imgSrc: Bmw,
     name: 'BMW e34',
     year: '1996',
     country: 'Германия',
   },
   {
-    id: '2',
     imgSrc: HondaS200,
     name: 'Honda s2000',
     year: '2009',
     country: 'Япония',
   },
   {
-    id: '3',
     imgSrc: LamborghiniAventador,
     name: 'Lamborghini Aventador',
     year: '2020',
     country: 'Италия',
   },
   {
-    id: '4',
     imgSrc: McLarenP1,
     name: 'McLaren P1',
     year: '2015',
     country: 'Великобритания',
   },
   {
-    id: '5',
     imgSrc: MercedesBenzSClassW222,
     name: 'Mercedes-benz S-class w222',
     year: '2020',
     country: 'Германия',
   },
   {
-    id: '6',
     imgSrc: OpelSpeedster,
     name: 'Opel Speedster',
     year: '2005',
     country: 'Великобритания',
   },
   {
-    id: '7',
     imgSrc: Porsche911,
     name: 'Porsche 911',
     year: '2000',
@@ -68,25 +60,9 @@ const carsArray = [
   },
 ];
 
-
-interface IUseAddElementProps {
-  add: () => void;
-  theArray: [];
-}
-export function useAddElement<IUseAddElementProps>() {
-  const [theArray, setTheArray] = useState(carsArray);
-
-  const add = useCallback((newValue: ICarsCardProps) => {
-    setTheArray((oldArray) => [...oldArray, newValue]);
-  }, []);
-
-  return { add, theArray };
-}
-
 const renderedCarItems = carsArray.map((item) => (
   <Car
-    key={item.id}
-    id={item.id}
+    key={item.imgSrc + item.name}
     imgSrc={item.imgSrc}
     name={item.name}
     year={item.year}
@@ -96,14 +72,15 @@ const renderedCarItems = carsArray.map((item) => (
 
 export function Cars() {
   const createCardModal = useModalController();
-
+  const createNewCard = useAddElement();
   return (
     <CarsWrapper>
       {renderedCarItems}
-      <Modal
+      <ModalCreateCard
         isOpen={createCardModal.isOpen}
         close={createCardModal.close}
         title="Title"
+        addValue={createNewCard.addValue}
       />
       <AddButton onClick={createCardModal.open}>
         <AddButtonImg src={plusSvg} alt="plus svg" />

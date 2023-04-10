@@ -7,15 +7,14 @@ import {
 import { Text, TextBold } from '../../../Text/index.styles';
 
 export interface ICarsCardProps {
-  id: string;
   imgSrc: string;
   name: string;
   year: string;
   country: string;
 }
-export function Car({ id, imgSrc, name, year, country }: ICarsCardProps) {
+export function Car({ imgSrc, name, year, country }: ICarsCardProps) {
   return (
-    <CarsCard key={id}>
+    <CarsCard>
       <CarsCardImgWrapper>
         <CarsCardImg src={imgSrc} />
       </CarsCardImgWrapper>
