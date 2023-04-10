@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { IModalProps } from '@/modals/Modal';
 import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
-import { carsArray } from '@/pages/Home';
 import Bmw from '@/assets/images/bmw_e34.jpg';
 import HondaS200 from '@/assets/images/honda_s2000.jpg';
 import LamborghiniAventador from '@/assets/images/lamborghini_aventado.jpg';
@@ -10,7 +9,7 @@ import MercedesBenzSClassW222 from '@/assets/images/mercedesbenz_sclass_w222.jpg
 import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
 import Porsche911 from '@/assets/images/porsche_911.jpg';
 
-export interface IModalCreateCardProps extends IModalProps {
+export interface IAddElementProps extends IModalProps {
   newValue?: ICarsCardProps;
   addValue: (newValue: ICarsCardProps) => void;
 }

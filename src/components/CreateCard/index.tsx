@@ -8,27 +8,27 @@ import {
   CreateCardLabel,
 } from '@/components/CreateCard/index.styles';
 import { useCreateCard } from './useCreateCard';
-import { IModalCreateCardProps } from '@/components/ModalCreateCard';
+import { IAddElementProps } from '@/components/ModalCreateCard/useAddElement';
 
-export function CreateCard({ addValue }: IModalCreateCardProps) {
-  const form = useCreateCard();
-  console.log(form.formik.values);
+export function CreateCard({ addValue }: IAddElementProps) {
+  const { formik } = useCreateCard();
+  console.log(formik.values);
   return (
-    <CreateCardForm onSubmit={form.formik.handleSubmit}>
+    <CreateCardForm onSubmit={formik.handleSubmit}>
       <CreateCardLabel htmlFor="imgSrc">Enter image url </CreateCardLabel>
       <CreateCardFieldWrapper>
         <CreateCardField
           id="imgSrc"
           name="imgSrc"
           type="text"
-          onChange={form.formik.handleChange}
-          onBlur={form.formik.handleBlur}
-          value={form.formik.values.imgSrc}
-          isValid={!(form.formik.errors.imgSrc && form.formik.touched.imgSrc)}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.imgSrc}
+          isValid={!(formik.errors.imgSrc && formik.touched.imgSrc)}
         />
-        {form.formik.errors.imgSrc && form.formik.touched.imgSrc ? (
+        {formik.errors.imgSrc && formik.touched.imgSrc ? (
           <CreateCardErrorMessage>
-            {form.formik.errors.imgSrc}
+            {formik.errors.imgSrc}
           </CreateCardErrorMessage>
         ) : null}
       </CreateCardFieldWrapper>
@@ -39,15 +39,13 @@ export function CreateCard({ addValue }: IModalCreateCardProps) {
           id="name"
           name="name"
           type="text"
-          onChange={form.formik.handleChange}
-          onBlur={form.formik.handleBlur}
-          value={form.formik.values.name}
-          isValid={!(form.formik.errors.name && form.formik.touched.name)}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.name}
+          isValid={!(formik.errors.name && formik.touched.name)}
         />
-        {form.formik.errors.name && form.formik.touched.name ? (
-          <CreateCardErrorMessage>
-            {form.formik.errors.name}
-          </CreateCardErrorMessage>
+        {formik.errors.name && formik.touched.name ? (
+          <CreateCardErrorMessage>{formik.errors.name}</CreateCardErrorMessage>
         ) : null}
       </CreateCardFieldWrapper>
 
@@ -57,15 +55,13 @@ export function CreateCard({ addValue }: IModalCreateCardProps) {
           id="year"
           name="year"
           type="text"
-          onChange={form.formik.handleChange}
-          onBlur={form.formik.handleBlur}
-          value={form.formik.values.year}
-          isValid={!(form.formik.errors.year && form.formik.touched.year)}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.year}
+          isValid={!(formik.errors.year && formik.touched.year)}
         />
-        {form.formik.errors.year && form.formik.touched.year ? (
-          <CreateCardErrorMessage>
-            {form.formik.errors.year}
-          </CreateCardErrorMessage>
+        {formik.errors.year && formik.touched.year ? (
+          <CreateCardErrorMessage>{formik.errors.year}</CreateCardErrorMessage>
         ) : null}
       </CreateCardFieldWrapper>
 
@@ -75,14 +71,14 @@ export function CreateCard({ addValue }: IModalCreateCardProps) {
           id="country"
           name="country"
           type="text"
-          onChange={form.formik.handleChange}
-          onBlur={form.formik.handleBlur}
-          value={form.formik.values.country}
-          isValid={!(form.formik.errors.country && form.formik.touched.country)}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.country}
+          isValid={!(formik.errors.country && formik.touched.country)}
         />
-        {form.formik.errors.country && form.formik.touched.country ? (
+        {formik.errors.country && formik.touched.country ? (
           <CreateCardErrorMessage>
-            {form.formik.errors.country}
+            {formik.errors.country}
           </CreateCardErrorMessage>
         ) : null}
       </CreateCardFieldWrapper>

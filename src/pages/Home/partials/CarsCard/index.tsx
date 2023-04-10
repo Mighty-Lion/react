@@ -4,7 +4,7 @@ import {
   CarsCardImgWrapper,
   CarsCardTextWrapper,
 } from './index.styles';
-import { Text, TextBold } from '../../../../components/Text/index.styles';
+import { Text, TextBold } from '@/components/Text/index.styles';
 
 export interface ICarsCardProps {
   imgSrc: string;
