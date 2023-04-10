@@ -12,54 +12,13 @@ import {
   AddButtonImg,
 } from '@/pages/Home/partials/Button/index.styles';
 import { useModalController } from '@/hooks/useModalController';
-import { ModalCreateCard, useAddElement } from '@/components/ModalCreateCard';
+import { ModalCreateCard } from '@/components/ModalCreateCard';
 import { Car } from '@/pages/Home/partials/CarsCard';
 import { CarsWrapper } from '@/pages/Home/index.styles';
-
-export const carsArray = [
-  {
-    imgSrc: Bmw,
-    name: 'BMW e34',
-    year: '1996',
-    country: 'Германия',
-  },
-  {
-    imgSrc: HondaS200,
-    name: 'Honda s2000',
-    year: '2009',
-    country: 'Япония',
-  },
-  {
-    imgSrc: LamborghiniAventador,
-    name: 'Lamborghini Aventador',
-    year: '2020',
-    country: 'Италия',
-  },
-  {
-    imgSrc: McLarenP1,
-    name: 'McLaren P1',
-    year: '2015',
-    country: 'Великобритания',
-  },
-  {
-    imgSrc: MercedesBenzSClassW222,
-    name: 'Mercedes-benz S-class w222',
-    year: '2020',
-    country: 'Германия',
-  },
-  {
-    imgSrc: OpelSpeedster,
-    name: 'Opel Speedster',
-    year: '2005',
-    country: 'Великобритания',
-  },
-  {
-    imgSrc: Porsche911,
-    name: 'Porsche 911',
-    year: '2000',
-    country: 'Германия',
-  },
-];
+import {
+  carsArray,
+  useAddElement,
+} from '@/components/ModalCreateCard/useAddElement';
 
 const renderedCarItems = carsArray.map((item) => (
   <Car
