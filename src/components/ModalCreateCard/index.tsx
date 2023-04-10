@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { IModalProps, Modal } from '@/components/Modal';
+import { IModalProps, Modal } from '@/modals/Modal';
 import { CreateCard } from '@/components/CreateCard';
 import { ICarsCardProps } from '@/components/Cars/partials/CarsCard';
 import { carsArray } from '@/components/Cars';

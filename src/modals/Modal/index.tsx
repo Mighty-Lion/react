@@ -4,7 +4,7 @@ import {
   ModalContainer,
   ModalTitle,
   ModalWrapper,
-} from '@/components/Modal/index.styles';
+} from '@/modals/Modal/index.styles';
 import closeSvg from '@/assets/images/close.svg';
 
 export interface IModalProps {
