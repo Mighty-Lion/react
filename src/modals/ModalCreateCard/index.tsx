@@ -10,7 +10,7 @@ export function ModalCreateCard({
 }: IAddElementProps) {
   return (
     <Modal title={title} isOpen={isOpen} close={close}>
-      <CreateCard addValue={addValue} />
+      <CreateCard addValue={addValue} close={close} />
     </Modal>
   );
 }

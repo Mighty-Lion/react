@@ -8,24 +8,21 @@ import { useModalController } from '@/hooks/useModalController';
 import { ModalCreateCard } from '@/modals/ModalCreateCard';
 import { Car } from '@/pages/Home/partials/CarsCard';
 import { CarsWrapper } from '@/pages/Home/index.styles';
-import {
-  carsArray,
-  useAddElement,
-} from '@/modals/ModalCreateCard/useAddElement';
-
-const renderedCarItems = carsArray.map((item) => (
-  <Car
-    key={item.imgSrc + item.name}
-    imgSrc={item.imgSrc}
-    name={item.name}
-    year={item.year}
-    country={item.country}
-  />
-));
+import { useAddElement } from '@/modals/ModalCreateCard/useAddElement';
 
 export default function Home() {
   const { isOpen, open, close } = useModalController();
-  const { addValue } = useAddElement();
+  const { theArray, addValue } = useAddElement();
+
+  const renderedCarItems = theArray.map((item) => (
+    <Car
+      key={item.imgSrc + item.name + item.year}
+      imgSrc={item.imgSrc}
+      name={item.name}
+      year={item.year}
+      country={item.country}
+    />
+  ));
 
   return (
     <CarsWrapper>

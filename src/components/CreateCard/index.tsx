@@ -9,10 +9,18 @@ import {
 } from '@/components/CreateCard/index.styles';
 import { useCreateCard } from './useCreateCard';
 import { IAddElementProps } from '@/modals/ModalCreateCard/useAddElement';
+import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
 
-export function CreateCard({ addValue }: IAddElementProps) {
+export function CreateCard({ addValue, close }: IAddElementProps) {
   const { formik } = useCreateCard();
-  console.log(formik.values);
+  // console.log(formik.values);
+  function isSubmit(values: ICarsCardProps) {
+    if (formik.isValid) {
+      addValue(values);
+      close;
+    }
+  }
+
   return (
     <CreateCardForm onSubmit={formik.handleSubmit}>
       <CreateCardLabel htmlFor="imgSrc">Enter image url </CreateCardLabel>
@@ -54,7 +62,7 @@ export function CreateCard({ addValue }: IAddElementProps) {
         <CreateCardField
           id="year"
           name="year"
-          type="text"
+          type="number"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.year}
@@ -83,7 +91,9 @@ export function CreateCard({ addValue }: IAddElementProps) {
         ) : null}
       </CreateCardFieldWrapper>
 
-      <CreateCardButton type="submit">Submit</CreateCardButton>
+      <CreateCardButton onClick={() => isSubmit(formik.values)} type="submit">
+        Submit
+      </CreateCardButton>
     </CreateCardForm>
   );
 }
