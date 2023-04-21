@@ -21,7 +21,7 @@ export const CreateCardValidateSchema = Yup.object().shape({
     .required('Введите корректный год!'),
   country: Yup.string()
     .min(2, 'Too Short!')
-    .max(15, 'Too Long!')
+    .max(25, 'Too Long!')
     .matches(/^[A-Za-zА-Яа-я]*$/, 'Please enter valid country')
     .required('Enter correct name!'),
 });
@@ -30,6 +30,7 @@ export function useCreateCardModal({
   editCards,
   close,
   selectedCard,
+  isOpen,
 }: ICreateCardModalProps) {
   const formik = useFormik({
     initialValues: {
@@ -54,5 +55,12 @@ export function useCreateCardModal({
       formik.setFieldValue('country', selectedCard.country);
     }
   }, [selectedCard]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      formik.resetForm();
+    }
+  }, [isOpen]);
+
   return { formik };
 }

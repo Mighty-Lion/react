@@ -9,7 +9,6 @@ import MercedesBenzSClassW222 from '@/assets/images/mercedesbenz_sclass_w222.jpg
 import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
 import Porsche911 from '@/assets/images/porsche_911.jpg';
 
-
 export const carsArray = [
   {
     id: '0BMW e341996',
@@ -63,28 +62,29 @@ export const carsArray = [
 ];
 
 export function useEditCards() {
-  const [theArray, setTheArray] = useState(carsArray);
+  const [theArray, setTheArray] = useState<ICarsCardProps[]>(carsArray);
   const [selectedCard, setSelectedCard] = useState<ICarsCardProps | undefined>(
     undefined
   );
 
-  console.log(theArray);
   const editCards = (newValue: ICarsCardProps) => {
-    if (!newValue.id) {
+    if (!selectedCard?.id) {
       setTheArray((prev) => {
         const id = `${prev.length + newValue.name + newValue.year}`;
 
-        return [...prev, { id, ...newValue }];
+        return [...prev, { ...newValue, id }];
       });
     } else {
-      // setTheArray((prev) => {
-      //   prev.map((item) => {
-      //     if (item.id === newValue.id) {
-      //     }
-      //   });
-      // });
+      setTheArray((prev) => {
+        const { id } = selectedCard;
+
+        return prev.map((item) => {
+          return selectedCard.id === item.id ? { ...newValue, id } : item;
+        });
+      });
+      setSelectedCard(undefined);
     }
   };
-
+  console.log(theArray);
   return { theArray, editCards, setTheArray, selectedCard, setSelectedCard };
 }

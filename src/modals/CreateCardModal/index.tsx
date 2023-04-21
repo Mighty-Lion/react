@@ -21,8 +21,12 @@ export function CreateCardModal({
   editCards,
   selectedCard,
 }: ICreateCardModalProps) {
-  const { formik } = useCreateCardModal({ editCards, close, selectedCard });
-
+  const { formik } = useCreateCardModal({
+    editCards,
+    close,
+    selectedCard,
+    isOpen,
+  });
 
   return (
     <Modal title={title} isOpen={isOpen} close={close}>
