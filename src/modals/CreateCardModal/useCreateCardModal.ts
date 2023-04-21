@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useEffect } from 'react';
-import { IAddElementProps } from '@/modals/ModalCreateCard/useEditCards';
+import { ICreateCardModalProps } from '@/modals/CreateCardModal/index';
 
 export const CreateCardValidateSchema = Yup.object().shape({
   imgSrc: Yup.string()
@@ -22,11 +22,15 @@ export const CreateCardValidateSchema = Yup.object().shape({
   country: Yup.string()
     .min(2, 'Too Short!')
     .max(15, 'Too Long!')
-    .matches(/^[A-Za-z ]*$/, 'Please enter valid country')
+    .matches(/^[A-Za-zА-Яа-я]*$/, 'Please enter valid country')
     .required('Enter correct name!'),
 });
 
-export function useCreateCard({ editCards, close }: IAddElementProps) {
+export function useCreateCardModal({
+  editCards,
+  close,
+  selectedCard,
+}: ICreateCardModalProps) {
   const formik = useFormik({
     initialValues: {
       id: undefined,
@@ -42,6 +46,13 @@ export function useCreateCard({ editCards, close }: IAddElementProps) {
     },
   });
 
-  // useEffect( ,[])
+  useEffect(() => {
+    if (selectedCard) {
+      formik.setFieldValue('imgSrc', selectedCard.imgSrc);
+      formik.setFieldValue('name', selectedCard.name);
+      formik.setFieldValue('year', selectedCard.year);
+      formik.setFieldValue('country', selectedCard.country);
+    }
+  }, [selectedCard]);
   return { formik };
 }

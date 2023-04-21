@@ -6,9 +6,9 @@ import {
   AddButtonImg,
 } from '@/pages/Home/partials/Button/index.styles';
 import { useModalController } from '@/hooks/useModalController';
-import { ModalCreateCard } from '@/modals/ModalCreateCard';
+import { CreateCardModal } from '../../modals/CreateCardModal';
 import { Car, ICarsCardProps } from '@/pages/Home/partials/CarsCard';
-import { useEditCards } from '@/modals/ModalCreateCard/useEditCards';
+import { useEditCards } from '@/modals/CreateCardModal/useEditCards';
 import { CarsWrapper } from '@/pages/Home/index.styles';
 
 export interface ICarProps extends ICarsCardProps {
@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <CarsWrapper>
       {renderedCarItems}
-      <ModalCreateCard
+      <CreateCardModal
         isOpen={isOpen}
         close={close}
         title="Title"

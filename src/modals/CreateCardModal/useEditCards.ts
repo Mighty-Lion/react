@@ -9,10 +9,7 @@ import MercedesBenzSClassW222 from '@/assets/images/mercedesbenz_sclass_w222.jpg
 import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
 import Porsche911 from '@/assets/images/porsche_911.jpg';
 
-export interface IAddElementProps extends IModalProps {
-  editCards: (newValue: ICarsCardProps) => void;
-  onCreate?: () => void;
-}
+
 export const carsArray = [
   {
     id: '0BMW e341996',

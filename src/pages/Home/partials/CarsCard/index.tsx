@@ -19,7 +19,6 @@ export interface ICarsCardProps {
   country: string;
 }
 
-
 export function Car({ imgSrc, name, year, country, onEdit }: ICarProps) {
   return (
     <CarsCard>
