@@ -59,4 +59,9 @@ export const CreateCardButton = styled.button`
     background: #646cff;
     color: white;
   }
+
+  &:disabled {
+    background: lightblue;
+    color: white;
+  }
 `;

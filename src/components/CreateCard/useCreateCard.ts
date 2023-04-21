@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import { useEffect } from 'react';
+import { IAddElementProps } from '@/modals/ModalCreateCard/useEditCards';
 
 export const CreateCardValidateSchema = Yup.object().shape({
   imgSrc: Yup.string()
@@ -11,7 +13,7 @@ export const CreateCardValidateSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .matches(/^[A-Za-z0-9 ]*$/, 'Please enter valid name')
+    .matches(/^[A-Za-z0-9-\w ]*$/, 'Please enter valid name')
     .required('Enter correct name!'),
   year: Yup.number()
     .min(1883, 'Первый автомобиль появился в 1883 году.')
@@ -24,9 +26,10 @@ export const CreateCardValidateSchema = Yup.object().shape({
     .required('Enter correct name!'),
 });
 
-export function useCreateCard() {
+export function useCreateCard({ editCards, close }: IAddElementProps) {
   const formik = useFormik({
     initialValues: {
+      id: undefined,
       imgSrc: '',
       name: '',
       year: '1883',
@@ -34,9 +37,11 @@ export function useCreateCard() {
     },
     validationSchema: CreateCardValidateSchema,
     onSubmit: (values) => {
-      console.log(values);
+      editCards(values);
+      close && close();
     },
   });
 
+  // useEffect( ,[])
   return { formik };
 }

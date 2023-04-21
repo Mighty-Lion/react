@@ -8,18 +8,10 @@ import {
   CreateCardLabel,
 } from '@/components/CreateCard/index.styles';
 import { useCreateCard } from './useCreateCard';
-import { IAddElementProps } from '@/modals/ModalCreateCard/useAddElement';
-import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
+import { IAddElementProps } from '@/modals/ModalCreateCard/useEditCards';
 
-export function CreateCard({ addValue, close }: IAddElementProps) {
-  const { formik } = useCreateCard();
-  // console.log(formik.values);
-  function isSubmit(values: ICarsCardProps) {
-    if (formik.isValid) {
-      addValue(values);
-      close;
-    }
-  }
+export function CreateCard({ editCards, close }: IAddElementProps) {
+  const { formik } = useCreateCard({ editCards, close });
 
   return (
     <CreateCardForm onSubmit={formik.handleSubmit}>
@@ -91,7 +83,7 @@ export function CreateCard({ addValue, close }: IAddElementProps) {
         ) : null}
       </CreateCardFieldWrapper>
 
-      <CreateCardButton onClick={() => isSubmit(formik.values)} type="submit">
+      <CreateCardButton type="submit" disabled={!formik.isValid}>
         Submit
       </CreateCardButton>
     </CreateCardForm>

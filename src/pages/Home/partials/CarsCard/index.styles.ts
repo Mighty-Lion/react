@@ -25,3 +25,26 @@ export const CarsCardTextWrapper = styled.div`
   display: grid;
   grid-auto-flow: row;
 `;
+
+export const CarsCardButtonWrapper = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  padding-top: 10px;
+`;
+
+export const CarsCardButton = styled.button`
+  height: 3em;
+  background: lightcyan;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s all;
+  &:hover {
+    background: #70dafb;
+  }
+
+  &:active {
+    background: #8788fb;
+  }
+`;
