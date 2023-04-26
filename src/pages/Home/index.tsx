@@ -13,10 +13,12 @@ import { CarsWrapper } from '@/pages/Home/index.styles';
 
 export interface ICarProps extends ICarsCardProps {
   onEdit: () => void;
+  onRemove: () => void;
 }
 export default function Home() {
   const { isOpen, open, close } = useModalController();
-  const { theArray, editCards, setSelectedCard, selectedCard } = useEditCards();
+  const { theArray, editCards, setSelectedCard, selectedCard, setIsRemove } =
+    useEditCards();
 
   const renderedCarItems = theArray.map((item: ICarsCardProps) => (
     <Car
@@ -26,8 +28,13 @@ export default function Home() {
       year={item.year}
       country={item.country}
       onEdit={() => {
+        setIsRemove(() => false);
         setSelectedCard(item);
         open();
+      }}
+      onRemove={() => {
+        setSelectedCard(item);
+        setIsRemove(() => true);
       }}
     />
   ));

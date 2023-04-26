@@ -19,7 +19,14 @@ export interface ICarsCardProps {
   country: string;
 }
 
-export function Car({ imgSrc, name, year, country, onEdit }: ICarProps) {
+export function Car({
+  imgSrc,
+  name,
+  year,
+  country,
+  onEdit,
+  onRemove,
+}: ICarProps) {
   return (
     <CarsCard>
       <CarsCardImgWrapper>
@@ -38,7 +45,7 @@ export function Car({ imgSrc, name, year, country, onEdit }: ICarProps) {
         <CarsCardButton onClick={onEdit}>
           <img src={editSvg} alt="edit btn" />
         </CarsCardButton>
-        <CarsCardButton>
+        <CarsCardButton onClick={onRemove}>
           <img src={deleteSvg} alt="delete btn" />
         </CarsCardButton>
       </CarsCardButtonWrapper>

@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
-import { IModalProps } from '@/components/Modal';
+import { useState } from 'react';
 import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
 import Bmw from '@/assets/images/bmw_e34.jpg';
 import HondaS200 from '@/assets/images/honda_s2000.jpg';
@@ -8,6 +7,7 @@ import McLarenP1 from '@/assets/images/mclaren_p1.jpg';
 import MercedesBenzSClassW222 from '@/assets/images/mercedesbenz_sclass_w222.jpg';
 import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
 import Porsche911 from '@/assets/images/porsche_911.jpg';
+import { ICarProps } from '@/pages/Home';
 
 export const carsArray = [
   {
@@ -66,8 +66,8 @@ export function useEditCards() {
   const [selectedCard, setSelectedCard] = useState<ICarsCardProps | undefined>(
     undefined
   );
-
-  const editCards = (newValue: ICarsCardProps) => {
+  const [isRemove, setIsRemove] = useState(false);
+  function editCards(newValue: ICarsCardProps) {
     if (!selectedCard?.id) {
       setTheArray((prev) => {
         const id = `${prev.length + newValue.name + newValue.year}`;
@@ -84,7 +84,16 @@ export function useEditCards() {
       });
       setSelectedCard(undefined);
     }
+  }
+  console.log(selectedCard);
+  console.log(isRemove);
+  return {
+    theArray,
+    editCards,
+    setTheArray,
+    selectedCard,
+    setSelectedCard,
+    isRemove,
+    setIsRemove,
   };
-  console.log(theArray);
-  return { theArray, editCards, setTheArray, selectedCard, setSelectedCard };
 }
