@@ -66,39 +66,34 @@ export function useEditCards() {
   const [selectedCard, setSelectedCard] = useState<ICarsCardProps | undefined>(
     undefined
   );
-  const [isRemove, setIsRemove] = useState(false);
   function editCards(newValue: ICarsCardProps) {
-    if (!isRemove) {
-      if (!selectedCard?.id) {
-        setTheArray((prev) => {
-          const id = `${prev.length + newValue.name + newValue.year}`;
+    if (!selectedCard?.id) {
+      setTheArray((prev) => {
+        const id = `${prev.length + newValue.name + newValue.year}`;
 
-          return [...prev, { ...newValue, id }];
-        });
-      } else {
-        setTheArray((prev) => {
-          const { id } = selectedCard;
-
-          return prev.map((item) => {
-            return selectedCard.id === item.id ? { ...newValue, id } : item;
-          });
-        });
-        setSelectedCard(undefined);
-      }
+        return [...prev, { ...newValue, id }];
+      });
     } else {
       setTheArray((prev) => {
-        return prev.filter((item) => item.id !== selectedCard?.id);
+        const { id } = selectedCard;
+
+        return prev.map((item) => {
+          return selectedCard.id === item.id ? { ...newValue, id } : item;
+        });
       });
+      setSelectedCard(undefined);
     }
   }
 
+  function removeCard(index: number) {
+    setTheArray((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
+  }
   return {
     theArray,
     editCards,
     setTheArray,
     selectedCard,
     setSelectedCard,
-    isRemove,
-    setIsRemove,
+    removeCard,
   };
 }
