@@ -33,8 +33,8 @@ export default function Home() {
         open();
       }}
       onRemove={() => {
-        setSelectedCard(item);
         setIsRemove(() => true);
+        setSelectedCard(item);
       }}
     />
   ));

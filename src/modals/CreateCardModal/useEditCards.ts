@@ -68,25 +68,30 @@ export function useEditCards() {
   );
   const [isRemove, setIsRemove] = useState(false);
   function editCards(newValue: ICarsCardProps) {
-    if (!selectedCard?.id) {
-      setTheArray((prev) => {
-        const id = `${prev.length + newValue.name + newValue.year}`;
+    if (!isRemove) {
+      if (!selectedCard?.id) {
+        setTheArray((prev) => {
+          const id = `${prev.length + newValue.name + newValue.year}`;
 
-        return [...prev, { ...newValue, id }];
-      });
+          return [...prev, { ...newValue, id }];
+        });
+      } else {
+        setTheArray((prev) => {
+          const { id } = selectedCard;
+
+          return prev.map((item) => {
+            return selectedCard.id === item.id ? { ...newValue, id } : item;
+          });
+        });
+        setSelectedCard(undefined);
+      }
     } else {
       setTheArray((prev) => {
-        const { id } = selectedCard;
-
-        return prev.map((item) => {
-          return selectedCard.id === item.id ? { ...newValue, id } : item;
-        });
+        return prev.filter((item) => item.id !== selectedCard?.id);
       });
-      setSelectedCard(undefined);
     }
   }
-  console.log(selectedCard);
-  console.log(isRemove);
+
   return {
     theArray,
     editCards,

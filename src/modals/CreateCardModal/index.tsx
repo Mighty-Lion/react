@@ -13,7 +13,6 @@ import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
 export interface ICreateCardModalProps extends IModalProps {
   editCards: (newValue: ICarsCardProps) => void;
   selectedCard?: ICarsCardProps | undefined;
-  isRemove?: boolean;
 }
 export function CreateCardModal({
   title,
