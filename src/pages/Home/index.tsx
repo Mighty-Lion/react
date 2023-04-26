@@ -17,14 +17,8 @@ export interface ICarProps extends ICarsCardProps {
 }
 export default function Home() {
   const { isOpen, open, close } = useModalController();
-  const {
-    theArray,
-    editCards,
-    setSelectedCard,
-    removeCard,
-    setIsRemove,
-    selectedCard,
-  } = useEditCards();
+  const { theArray, editCards, selectedCard, setSelectedCard, removeCard } =
+    useEditCards();
 
   const renderedCarItems = theArray.map((item: ICarsCardProps, index) => (
     <Car
@@ -34,7 +28,6 @@ export default function Home() {
       year={item.year}
       country={item.country}
       onEdit={() => {
-        setIsRemove(() => false);
         setSelectedCard(item);
         open();
       }}
