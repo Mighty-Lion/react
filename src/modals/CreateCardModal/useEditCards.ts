@@ -66,34 +66,42 @@ export function useEditCards() {
   const [selectedCard, setSelectedCard] = useState<ICarsCardProps | undefined>(
     undefined
   );
-  function editCards(newValue: ICarsCardProps) {
+
+  function addCard(newValue: ICarsCardProps) {
+    setTheArray((prev) => {
+      const id = `${prev.length + newValue.name + newValue.year}`;
+
+      return [...prev, { ...newValue, id }];
+    });
+  }
+
+  function editCard(newValue: ICarsCardProps) {
+    setTheArray((prev) => {
+      const id = selectedCard?.id;
+
+      return prev.map((item) => {
+        return id === item.id ? { ...newValue, id } : item;
+      });
+    });
+    setSelectedCard(undefined);
+  }
+  function checkCards(newValue: ICarsCardProps) {
     if (!selectedCard?.id) {
-      setTheArray((prev) => {
-        const id = `${prev.length + newValue.name + newValue.year}`;
-
-        return [...prev, { ...newValue, id }];
-      });
+      addCard(newValue);
     } else {
-      setTheArray((prev) => {
-        const { id } = selectedCard;
-
-        return prev.map((item) => {
-          return selectedCard.id === item.id ? { ...newValue, id } : item;
-        });
-      });
-      setSelectedCard(undefined);
+      editCard(newValue);
     }
   }
-
-  function removeCard(index: number) {
-    setTheArray((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
+  function removeCard(card: ICarsCardProps) {
+    setTheArray((prev) => prev.filter((item) => item.id !== card.id));
   }
+
   return {
     theArray,
-    editCards,
     setTheArray,
     selectedCard,
     setSelectedCard,
     removeCard,
+    checkCards,
   };
 }

@@ -11,18 +11,20 @@ import { useCreateCardModal } from '@/modals/CreateCardModal/useCreateCardModal'
 import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
 
 export interface ICreateCardModalProps extends IModalProps {
-  editCards: (newValue: ICarsCardProps) => void;
+  // editCards?: (newValue: ICarsCardProps) => void;
+  checkCards: (newValue: ICarsCardProps) => void;
   selectedCard?: ICarsCardProps | undefined;
 }
 export function CreateCardModal({
   title,
   isOpen,
   close,
-  editCards,
+  checkCards,
+
   selectedCard,
 }: ICreateCardModalProps) {
   const { formik } = useCreateCardModal({
-    editCards,
+    checkCards,
     close,
     selectedCard,
     isOpen,

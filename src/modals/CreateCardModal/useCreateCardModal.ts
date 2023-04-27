@@ -27,7 +27,7 @@ export const CreateCardValidateSchema = Yup.object().shape({
 });
 
 export function useCreateCardModal({
-  editCards,
+  checkCards,
   close,
   selectedCard,
   isOpen,
@@ -42,7 +42,7 @@ export function useCreateCardModal({
     },
     validationSchema: CreateCardValidateSchema,
     onSubmit: (values) => {
-      editCards(values);
+      checkCards(values);
       close && close();
     },
   });
