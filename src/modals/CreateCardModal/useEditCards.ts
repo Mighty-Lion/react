@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
 import Bmw from '@/assets/images/bmw_e34.jpg';
 import HondaS200 from '@/assets/images/honda_s2000.jpg';
@@ -85,7 +85,7 @@ export function useEditCards() {
     });
     setSelectedCard(undefined);
   }
-  function checkCards(newValue: ICarsCardProps) {
+  function redactCards(newValue: ICarsCardProps) {
     if (!selectedCard?.id) {
       addCard(newValue);
     } else {
@@ -96,12 +96,17 @@ export function useEditCards() {
     setTheArray((prev) => prev.filter((item) => item.id !== card.id));
   }
 
+  useEffect(
+    () => localStorage.setItem('savedTheArray', JSON.stringify(theArray)),
+    [theArray]
+  );
+
   return {
     theArray,
     setTheArray,
     selectedCard,
     setSelectedCard,
     removeCard,
-    checkCards,
+    redactCards,
   };
 }
