@@ -20,10 +20,7 @@ export default function Home() {
   const { theArray, redactCards, selectedCard, setSelectedCard, removeCard } =
     useEditCards();
 
-  const savedTheArray = localStorage.getItem('savedTheArray');
-  const storedTheArray = JSON.parse(savedTheArray);
-  console.log(savedTheArray)
-  const renderedCarItems = storedTheArray.map((item: ICarsCardProps) => (
+  const renderedCarItems = theArray.map((item: ICarsCardProps) => (
     <Car
       key={item.imgSrc + item.name + item.year}
       imgSrc={item.imgSrc}

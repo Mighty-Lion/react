@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { log } from 'util';
 import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
 import Bmw from '@/assets/images/bmw_e34.jpg';
 import HondaS200 from '@/assets/images/honda_s2000.jpg';
@@ -62,7 +63,14 @@ export const carsArray = [
 ];
 
 export function useEditCards() {
-  const [theArray, setTheArray] = useState<ICarsCardProps[]>(carsArray);
+  const savedTheArray = localStorage.getItem('savedTheArray');
+  const storedTheArray = JSON.parse(savedTheArray || '');
+
+  const [theArray, setTheArray] = useState<ICarsCardProps[]>(
+    !savedTheArray ? [] : storedTheArray
+  );
+
+  // const [theArray, setTheArray] = useState<ICarsCardProps[]>(carsArray);
   const [selectedCard, setSelectedCard] = useState<ICarsCardProps | undefined>(
     undefined
   );

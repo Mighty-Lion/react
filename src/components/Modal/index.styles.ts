@@ -13,6 +13,7 @@ export const ModalWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   background: rgba(0, 0, 0, 0.4);
+	overflow: hidden;
 `;
 
 export const ModalContainer = styled.div`
