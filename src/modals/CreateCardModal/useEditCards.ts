@@ -64,13 +64,9 @@ export const carsArray = [
 
 export function useEditCards() {
   const savedTheArray = localStorage.getItem('savedTheArray');
-  const storedTheArray = JSON.parse(savedTheArray || '');
+  const storedTheArray = JSON.parse(savedTheArray || '[]');
 
-  const [theArray, setTheArray] = useState<ICarsCardProps[]>(
-    !savedTheArray ? [] : storedTheArray
-  );
-
-  // const [theArray, setTheArray] = useState<ICarsCardProps[]>(carsArray);
+  const [theArray, setTheArray] = useState<ICarsCardProps[]>(storedTheArray);
   const [selectedCard, setSelectedCard] = useState<ICarsCardProps | undefined>(
     undefined
   );
