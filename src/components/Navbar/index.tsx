@@ -8,7 +8,7 @@ export function Navbar() {
       <Container>
         <NavbarList>
           <NavbarListLink to="/">Home</NavbarListLink>
-          <NavbarListLink to="/NotFound">2</NavbarListLink>
+          <NavbarListLink to="/Posts">Posts</NavbarListLink>
           <NavbarListLink to="/">3</NavbarListLink>
           <NavbarListLink to="/">4</NavbarListLink>
           <NavbarListLink to="/">5</NavbarListLink>
