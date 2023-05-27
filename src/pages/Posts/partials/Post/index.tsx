@@ -1,4 +1,4 @@
-import { PostCard } from '@/pages/Posts/partials/index.styles';
+import { PostCard } from '@/pages/Posts/partials/Post/index.styles';
 import { Text, TextBold } from '@/components/Text/index.styles';
 
 export interface IPostProps {

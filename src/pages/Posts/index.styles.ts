@@ -3,10 +3,10 @@ import { getBreakpoint } from '@/Breakpoinst';
 
 export const PostWrapper = styled.div`
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-	background: purple;
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
 
   @media (max-width: ${getBreakpoint('TABLET_L', 'down')}) {
     grid-template-columns: repeat(2, 1fr);
