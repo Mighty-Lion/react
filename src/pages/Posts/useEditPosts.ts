@@ -14,7 +14,7 @@ export default function useEditPosts() {
       setPosts(response.data);
     } catch (error) {
       console.log('handelSendReminder', error);
-      toastNotifications.handleFailure('Error!');
+      toastNotifications.handleFailure(error.message);
     }
   }
 
@@ -31,9 +31,9 @@ export default function useEditPosts() {
       };
       const response = await axios.post(apiUrl, newPostData);
       setPosts((prev) => [...prev, newPostData]);
-      toastNotifications.handleFailure('Error!');
     } catch (error: unknown) {
       console.log(error.message);
+      toastNotifications.handleFailure(error.message);
     }
 
     console.log(posts);
