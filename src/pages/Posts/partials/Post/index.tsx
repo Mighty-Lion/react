@@ -1,4 +1,9 @@
-import { PostCard } from '@/pages/Posts/partials/Post/index.styles';
+import {
+  PostCard,
+  PostCardButton,
+  PostCardButtonWrapper,
+  PostCardDescription,
+} from '@/pages/Posts/partials/Post/index.styles';
 import { Text, TextBold } from '@/components/Text/index.styles';
 
 export interface IPostProps {
@@ -10,7 +15,11 @@ export function Post({ title, description }: IPostProps) {
   return (
     <PostCard>
       <TextBold>{title}</TextBold>
-      <Text>{description}</Text>
+      <PostCardDescription>{description}</PostCardDescription>
+      <PostCardButtonWrapper>
+        <PostCardButton>Edit</PostCardButton>
+        <PostCardButton>Delete</PostCardButton>
+      </PostCardButtonWrapper>
     </PostCard>
   );
 }
