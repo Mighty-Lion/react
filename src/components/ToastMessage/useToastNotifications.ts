@@ -22,7 +22,7 @@ export function useToastNotifications(
         draggable: true,
         progress: undefined,
         theme: 'light',
-        // progressClassName: 'danger'
+        progressClassName: 'danger',
       });
     },
     [config]
