@@ -13,7 +13,7 @@ export default function useEditPosts() {
       const response = await axios(apiUrl);
       setPosts(response.data);
     } catch (error) {
-      console.log('handelSendReminder', error);
+      console.log('handelSendReminder', error.message);
       toastNotifications.handleFailure(error.message);
     }
   }
@@ -38,9 +38,41 @@ export default function useEditPosts() {
 
     console.log(posts);
   }
+
+  async function editPost(post: IPostProps) {
+    try {
+      const editedData = {
+        title: `${faker.commerce.product()}`,
+        description: `${faker.commerce.productDescription()}`,
+        id: `${post.id}`,
+      };
+      console.log(`Post ${post.id} edited`);
+      const response = await axios.put(`${apiUrl}/${post.id}`, editedData);
+      setPosts((prev) => {
+        return prev.map((item) => {
+          return post.id === item.id ? editedData : item;
+        });
+      });
+    } catch (error) {
+      console.log(error.message);
+      toastNotifications.handleFailure(error.message);
+    }
+  }
+  async function removePost(post: IPostProps) {
+    try {
+      console.log(`Post ${post.id} deleted`);
+      const response = await axios.delete(`${apiUrl}/${post.id}`);
+      setPosts((prev) => prev.filter((item) => item.id !== post.id));
+    } catch (error) {
+      console.log(error.message);
+      toastNotifications.handleFailure(error.message);
+    }
+  }
   return {
     posts,
     setPosts,
     addNewPost,
+    editPost,
+    removePost,
   };
 }

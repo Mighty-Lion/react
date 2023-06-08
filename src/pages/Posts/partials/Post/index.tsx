@@ -10,15 +10,17 @@ export interface IPostProps {
   id?: string;
   title: string;
   description: string;
+  onEdit?: () => void;
+  onRemove?: () => void;
 }
-export function Post({ title, description }: IPostProps) {
+export function Post({ title, description, onRemove , onEdit}: IPostProps) {
   return (
     <PostCard>
       <TextBold>{title}</TextBold>
       <PostCardDescription>{description}</PostCardDescription>
       <PostCardButtonWrapper>
-        <PostCardButton>Edit</PostCardButton>
-        <PostCardButton>Delete</PostCardButton>
+        <PostCardButton onClick={onEdit}>Edit</PostCardButton>
+        <PostCardButton onClick={onRemove}>Delete</PostCardButton>
       </PostCardButtonWrapper>
     </PostCard>
   );
