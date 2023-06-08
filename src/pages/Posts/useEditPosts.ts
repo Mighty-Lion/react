@@ -13,8 +13,12 @@ export default function useEditPosts() {
       const response = await axios(apiUrl);
       setPosts(response.data);
     } catch (error) {
-      console.log('handelSendReminder', error.message);
-      toastNotifications.handleFailure(error.message);
+      let errorMessage = 'Failed to do something exceptional';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      console.log('handelSendReminder', errorMessage);
+      toastNotifications.handleFailure(errorMessage);
     }
   }
 
@@ -31,9 +35,13 @@ export default function useEditPosts() {
       };
       const response = await axios.post(apiUrl, newPostData);
       setPosts((prev) => [...prev, newPostData]);
-    } catch (error: unknown) {
-      console.log(error.message);
-      toastNotifications.handleFailure(error.message);
+    } catch (error) {
+      let errorMessage = 'Failed to do something exceptional';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      console.log(errorMessage);
+      toastNotifications.handleFailure(errorMessage);
     }
 
     console.log(posts);
@@ -54,8 +62,12 @@ export default function useEditPosts() {
         });
       });
     } catch (error) {
-      console.log(error.message);
-      toastNotifications.handleFailure(error.message);
+      let errorMessage = 'Failed to do something exceptional';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      console.log(errorMessage);
+      toastNotifications.handleFailure(errorMessage);
     }
   }
   async function removePost(post: IPostProps) {
@@ -64,8 +76,12 @@ export default function useEditPosts() {
       const response = await axios.delete(`${apiUrl}/${post.id}`);
       setPosts((prev) => prev.filter((item) => item.id !== post.id));
     } catch (error) {
-      console.log(error.message);
-      toastNotifications.handleFailure(error.message);
+      let errorMessage = 'Failed to do something exceptional';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      console.log(errorMessage);
+      toastNotifications.handleFailure(errorMessage);
     }
   }
   return {

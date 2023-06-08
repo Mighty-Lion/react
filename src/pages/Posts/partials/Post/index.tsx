@@ -13,7 +13,7 @@ export interface IPostProps {
   onEdit?: () => void;
   onRemove?: () => void;
 }
-export function Post({ title, description, onRemove , onEdit}: IPostProps) {
+export function Post({ title, description, onRemove, onEdit }: IPostProps) {
   return (
     <PostCard>
       <TextBold>{title}</TextBold>
