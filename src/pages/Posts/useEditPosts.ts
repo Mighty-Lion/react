@@ -20,7 +20,6 @@ export default function useEditPosts() {
       if (error instanceof Error) {
         errorMessage = error.message;
       }
-      setIsFetching(true);
       console.log('handelSendReminder', errorMessage);
       toastNotifications.handleFailure(errorMessage);
     } finally {
@@ -55,7 +54,6 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
-      setIsFetching(false);
     } finally {
       setIsFetching(false);
     }
@@ -83,7 +81,6 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
-      setIsFetching(false);
     } finally {
       setIsFetching(false);
     }
@@ -101,7 +98,6 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
-      setIsFetching(false);
     } finally {
       setIsFetching(false);
     }
