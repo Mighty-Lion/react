@@ -57,8 +57,6 @@ export default function useEditPosts() {
       toastNotifications.handleFailure(errorMessage);
       setIsFetching(false);
     }
-
-    console.log(posts);
   }
 
   async function editPost(post: IPostProps) {
