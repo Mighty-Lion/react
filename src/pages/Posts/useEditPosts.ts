@@ -34,10 +34,7 @@ export default function useEditPosts() {
   async function addNewPost() {
     try {
       setIsFetching(true);
-      const { data } = await axios(apiUrl);
-      const dataLength = data.length;
-      console.log(dataLength);
-      const lastPostId = dataLength === 0 ? 0 : data[dataLength - 1].id;
+      const lastPostId = posts.length === 0 ? 0 : posts[posts.length - 1].id;
       const newPostId = Number(lastPostId) + 1;
       const newPostData = {
         title: `${faker.commerce.product()}`,
