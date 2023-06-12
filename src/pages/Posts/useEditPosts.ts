@@ -14,7 +14,6 @@ export default function useEditPosts() {
       setIsFetching(true);
       const response = await axios(apiUrl);
       setPosts(response.data);
-      setIsFetching(false);
       console.log(response);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
@@ -24,6 +23,8 @@ export default function useEditPosts() {
       setIsFetching(true);
       console.log('handelSendReminder', errorMessage);
       toastNotifications.handleFailure(errorMessage);
+    } finally {
+      setIsFetching(false);
     }
   }
 
@@ -47,7 +48,6 @@ export default function useEditPosts() {
       await axios.post(apiUrl, newPostData);
 
       setPosts((prev) => [...prev, newPostData]);
-      setIsFetching(false);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
       if (error instanceof Error) {
@@ -55,6 +55,8 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
+      setIsFetching(false);
+    } finally {
       setIsFetching(false);
     }
   }
@@ -74,7 +76,6 @@ export default function useEditPosts() {
           return post.id === item.id ? editedData : item;
         });
       });
-      setIsFetching(false);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
       if (error instanceof Error) {
@@ -82,6 +83,8 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
+      setIsFetching(false);
+    } finally {
       setIsFetching(false);
     }
   }
@@ -91,7 +94,6 @@ export default function useEditPosts() {
       console.log(`Post ${post.id} deleted`);
       const response = await axios.delete(`${apiUrl}/${post.id}`);
       setPosts((prev) => prev.filter((item) => item.id !== post.id));
-      setIsFetching(false);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
       if (error instanceof Error) {
@@ -99,6 +101,8 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
+      setIsFetching(false);
+    } finally {
       setIsFetching(false);
     }
   }
