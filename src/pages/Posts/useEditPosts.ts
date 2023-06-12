@@ -28,12 +28,19 @@ export default function useEditPosts() {
 
   async function addNewPost() {
     try {
+      const postsArrayLength = posts.length;
+      console.log(postsArrayLength);
+      const lastPostId =
+        postsArrayLength === 0 ? 0 : posts[postsArrayLength - 1].id;
+
+      const newPostId = Number(lastPostId) + 1;
       const newPostData = {
         title: `${faker.commerce.product()}`,
         description: `${faker.commerce.productDescription()}`,
-        id: `${posts.length + 1}`,
+        id: `${newPostId}`,
       };
-      const response = await axios.post(apiUrl, newPostData);
+      await axios.post(apiUrl, newPostData);
+
       setPosts((prev) => [...prev, newPostData]);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
