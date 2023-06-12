@@ -12,15 +12,26 @@ export interface IPostProps {
   description: string;
   onEdit?: () => void;
   onRemove?: () => void;
+  isFetching?: boolean;
 }
-export function Post({ title, description, onRemove, onEdit }: IPostProps) {
+export function Post({
+  title,
+  description,
+  onRemove,
+  onEdit,
+  isFetching,
+}: IPostProps) {
   return (
     <PostCard>
       <TextBold>{title}</TextBold>
       <PostCardDescription>{description}</PostCardDescription>
       <PostCardButtonWrapper>
-        <PostCardButton onClick={onEdit}>Edit</PostCardButton>
-        <PostCardButton onClick={onRemove}>Delete</PostCardButton>
+        <PostCardButton disabled={isFetching} onClick={onEdit}>
+          Edit
+        </PostCardButton>
+        <PostCardButton disabled={isFetching} onClick={onRemove}>
+          Delete
+        </PostCardButton>
       </PostCardButtonWrapper>
     </PostCard>
   );

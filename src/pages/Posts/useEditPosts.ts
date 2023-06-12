@@ -6,17 +6,22 @@ import { useToastNotifications } from '@/components/ToastMessage/useToastNotific
 
 export default function useEditPosts() {
   const [posts, setPosts] = useState<IPostProps[]>([]);
+  const [isFetching, setIsFetching] = useState(false);
   const apiUrl = 'https://646b784e7d3c1cae4ce3d933.mockapi.io/api/Products';
   const toastNotifications = useToastNotifications();
   async function fetchData() {
     try {
+      setIsFetching(true);
       const response = await axios(apiUrl);
       setPosts(response.data);
+      setIsFetching(false);
+      console.log(response);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
       if (error instanceof Error) {
         errorMessage = error.message;
       }
+      setIsFetching(true);
       console.log('handelSendReminder', errorMessage);
       toastNotifications.handleFailure(errorMessage);
     }
@@ -28,11 +33,11 @@ export default function useEditPosts() {
 
   async function addNewPost() {
     try {
-      const postsArrayLength = posts.length;
-      console.log(postsArrayLength);
-      const lastPostId =
-        postsArrayLength === 0 ? 0 : posts[postsArrayLength - 1].id;
-
+      setIsFetching(true);
+      const { data } = await axios(apiUrl);
+      const dataLength = data.length;
+      console.log(dataLength);
+      const lastPostId = dataLength === 0 ? 0 : data[dataLength - 1].id;
       const newPostId = Number(lastPostId) + 1;
       const newPostData = {
         title: `${faker.commerce.product()}`,
@@ -42,6 +47,7 @@ export default function useEditPosts() {
       await axios.post(apiUrl, newPostData);
 
       setPosts((prev) => [...prev, newPostData]);
+      setIsFetching(false);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
       if (error instanceof Error) {
@@ -49,6 +55,7 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
+      setIsFetching(false);
     }
 
     console.log(posts);
@@ -56,6 +63,7 @@ export default function useEditPosts() {
 
   async function editPost(post: IPostProps) {
     try {
+      setIsFetching(true);
       const editedData = {
         title: `${faker.commerce.product()}`,
         description: `${faker.commerce.productDescription()}`,
@@ -68,6 +76,7 @@ export default function useEditPosts() {
           return post.id === item.id ? editedData : item;
         });
       });
+      setIsFetching(false);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
       if (error instanceof Error) {
@@ -75,13 +84,16 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
+      setIsFetching(false);
     }
   }
   async function removePost(post: IPostProps) {
     try {
+      setIsFetching(true);
       console.log(`Post ${post.id} deleted`);
       const response = await axios.delete(`${apiUrl}/${post.id}`);
       setPosts((prev) => prev.filter((item) => item.id !== post.id));
+      setIsFetching(false);
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
       if (error instanceof Error) {
@@ -89,6 +101,7 @@ export default function useEditPosts() {
       }
       console.log(errorMessage);
       toastNotifications.handleFailure(errorMessage);
+      setIsFetching(false);
     }
   }
   return {
@@ -97,5 +110,6 @@ export default function useEditPosts() {
     addNewPost,
     editPost,
     removePost,
+    isFetching,
   };
 }
