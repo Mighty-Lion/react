@@ -14,11 +14,18 @@ import { CarsWrapper } from '@/pages/Home/index.styles';
 export interface ICarProps extends ICarsCardProps {
   onEdit: () => void;
   onRemove: () => void;
+  isFetching: boolean;
 }
 export default function Home() {
   const { isOpen, open, close } = useModalController();
-  const { carsArray, redactCards, selectedCard, setSelectedCard, removeCard } =
-    useEditCards();
+  const {
+    carsArray,
+    redactCards,
+    selectedCard,
+    setSelectedCard,
+    removeCard,
+    isFetching,
+  } = useEditCards();
 
   const renderedCarItems = carsArray.map((item: ICarsCardProps) => (
     <Car
@@ -27,6 +34,7 @@ export default function Home() {
       name={item.name}
       year={item.year}
       country={item.country}
+      isFetching={isFetching}
       onEdit={() => {
         setSelectedCard(item);
         open();
@@ -47,7 +55,7 @@ export default function Home() {
         redactCards={redactCards}
         selectedCard={selectedCard}
       />
-      <AddButton onClick={open}>
+      <AddButton disabled={isFetching} onClick={open}>
         <AddButtonImg src={plusSvg} alt="plus svg" />
       </AddButton>
     </CarsWrapper>

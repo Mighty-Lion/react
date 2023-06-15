@@ -26,6 +26,7 @@ export function Car({
   country,
   onEdit,
   onRemove,
+  isFetching,
 }: ICarProps) {
   return (
     <CarsCard>
@@ -42,10 +43,10 @@ export function Car({
         </Text>
       </CarsCardTextWrapper>
       <CarsCardButtonWrapper>
-        <CarsCardButton onClick={onEdit}>
+        <CarsCardButton disabled={isFetching} onClick={onEdit}>
           <img src={editSvg} alt="edit btn" />
         </CarsCardButton>
-        <CarsCardButton onClick={onRemove}>
+        <CarsCardButton disabled={isFetching} onClick={onRemove}>
           <img src={deleteSvg} alt="delete btn" />
         </CarsCardButton>
       </CarsCardButtonWrapper>

@@ -1,13 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ICarsCardProps } from '@/pages/Home/partials/CarsCard';
-import Bmw from '@/assets/images/bmw_e34.jpg';
-import HondaS200 from '@/assets/images/honda_s2000.jpg';
-import LamborghiniAventador from '@/assets/images/lamborghini_aventado.jpg';
-import McLarenP1 from '@/assets/images/mclaren_p1.jpg';
-import MercedesBenzSClassW222 from '@/assets/images/mercedesbenz_sclass_w222.jpg';
-import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
-import Porsche911 from '@/assets/images/porsche_911.jpg';
 import { useToastNotifications } from '@/components/ToastMessage/useToastNotifications';
 
 export function useEditCards() {
@@ -129,5 +122,6 @@ export function useEditCards() {
     setSelectedCard,
     removeCard,
     redactCards,
+    isFetching,
   };
 }

@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
-export const AddButton = styled.div`
+export const AddButton = styled.button`
   position: fixed;
-  bottom: 5px;
-  right: 5px;
-  width: 3em;
-  height: 3em;
+  bottom: 10px;
+  right: 10px;
+  width: 4em;
+  height: 4em;
   background: lightcyan;
   border: none;
   border-radius: 50%;
