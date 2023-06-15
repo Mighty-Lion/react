@@ -17,10 +17,10 @@ export interface ICarProps extends ICarsCardProps {
 }
 export default function Home() {
   const { isOpen, open, close } = useModalController();
-  const { theArray, redactCards, selectedCard, setSelectedCard, removeCard } =
+  const { carsArray, redactCards, selectedCard, setSelectedCard, removeCard } =
     useEditCards();
 
-  const renderedCarItems = theArray.map((item: ICarsCardProps) => (
+  const renderedCarItems = carsArray.map((item: ICarsCardProps) => (
     <Car
       key={item.imgSrc + item.name + item.year}
       imgSrc={item.imgSrc}

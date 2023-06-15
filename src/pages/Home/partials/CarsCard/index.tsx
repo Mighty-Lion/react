@@ -12,7 +12,7 @@ import editSvg from '@/assets/images/edit.svg';
 import { ICarProps } from '@/pages/Home';
 
 export interface ICarsCardProps {
-  id?: string;
+  id: string;
   imgSrc: string;
   name: string;
   year: string;

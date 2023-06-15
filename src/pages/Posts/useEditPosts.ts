@@ -7,11 +7,12 @@ import { useToastNotifications } from '@/components/ToastMessage/useToastNotific
 export default function useEditPosts() {
   const savedPosts = localStorage.getItem('savedPosts');
   const parsedPosts = savedPosts && JSON.parse(savedPosts);
+  const apiUrl = 'https://646b784e7d3c1cae4ce3d933.mockapi.io/api/Products';
+  const toastNotifications = useToastNotifications();
 
   const [posts, setPosts] = useState<IPostProps[]>(parsedPosts || []);
   const [isFetching, setIsFetching] = useState(false);
-  const apiUrl = 'https://646b784e7d3c1cae4ce3d933.mockapi.io/api/Products';
-  const toastNotifications = useToastNotifications();
+
   async function fetchData() {
     try {
       setIsFetching(true);
@@ -89,7 +90,7 @@ export default function useEditPosts() {
     try {
       setIsFetching(true);
       console.log(`Post ${post.id} deleted`);
-      const response = await axios.delete(`${apiUrl}/${post.id}`);
+      await axios.delete(`${apiUrl}/${post.id}`);
       setPosts((prev) => prev.filter((item) => item.id !== post.id));
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
@@ -103,7 +104,7 @@ export default function useEditPosts() {
     }
   }
 
-   useEffect(
+  useEffect(
     () => localStorage.setItem('savedPosts', JSON.stringify(posts)),
     [posts]
   );
