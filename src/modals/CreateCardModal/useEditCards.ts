@@ -10,58 +10,6 @@ import OpelSpeedster from '@/assets/images/opel_speedster.jpg';
 import Porsche911 from '@/assets/images/porsche_911.jpg';
 import { useToastNotifications } from '@/components/ToastMessage/useToastNotifications';
 
-export const oldCarsArray = [
-  {
-    id: '0BMW e341996',
-    imgSrc: Bmw,
-    name: 'BMW e34',
-    year: '1996',
-    country: 'Германия',
-  },
-  {
-    id: '1Honda s20002009',
-    imgSrc: HondaS200,
-    name: 'Honda s2000',
-    year: '2009',
-    country: 'Япония',
-  },
-  {
-    id: '2Lamborghini Aventador2020',
-    imgSrc: LamborghiniAventador,
-    name: 'Lamborghini Aventador',
-    year: '2020',
-    country: 'Италия',
-  },
-  {
-    id: '3McLaren P12015',
-    imgSrc: McLarenP1,
-    name: 'McLaren P1',
-    year: '2015',
-    country: 'Великобритания',
-  },
-  {
-    id: '4Mercedes-benz S-class w2222020',
-    imgSrc: MercedesBenzSClassW222,
-    name: 'Mercedes-benz S-class w222',
-    year: '2020',
-    country: 'Германия',
-  },
-  {
-    id: '5Opel Speedster2005',
-    imgSrc: OpelSpeedster,
-    name: 'Opel Speedster',
-    year: '2005',
-    country: 'Великобритания',
-  },
-  {
-    id: '6Porsche 9112000',
-    imgSrc: Porsche911,
-    name: 'Porsche 911',
-    year: '2000',
-    country: 'Германия',
-  },
-];
-
 export function useEditCards() {
   const savedCarsArray = localStorage.getItem('savedCarsArray');
   const parsedCarsArray = savedCarsArray && JSON.parse(savedCarsArray);
