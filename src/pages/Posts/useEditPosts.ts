@@ -5,7 +5,10 @@ import { IPostProps } from '@/pages/Posts/partials/Post';
 import { useToastNotifications } from '@/components/ToastMessage/useToastNotifications';
 
 export default function useEditPosts() {
-  const [posts, setPosts] = useState<IPostProps[]>([]);
+  const savedPosts = localStorage.getItem('savedPosts');
+  const parsedPosts = savedPosts && JSON.parse(savedPosts);
+
+  const [posts, setPosts] = useState<IPostProps[]>(parsedPosts || []);
   const [isFetching, setIsFetching] = useState(false);
   const apiUrl = 'https://646b784e7d3c1cae4ce3d933.mockapi.io/api/Products';
   const toastNotifications = useToastNotifications();
@@ -99,6 +102,12 @@ export default function useEditPosts() {
       setIsFetching(false);
     }
   }
+
+   useEffect(
+    () => localStorage.setItem('savedPosts', JSON.stringify(posts)),
+    [posts]
+  );
+
   return {
     posts,
     setPosts,
