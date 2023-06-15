@@ -103,11 +103,11 @@ export function useEditCards() {
       setIsFetching(true);
       const lastCardId =
         carsArray.length === 0 ? 0 : carsArray[carsArray.length - 1].id;
-      const id = Number(lastCardId) + 1;
+      const id = String(Number(lastCardId) + 1);
       const newCardData = { ...newValue, id };
       await axios.post(apiUrl, newCardData);
       setCarsArray((prev) => {
-        return [...prev, newCardData];
+        return [...prev, { ...newValue, id }];
       });
     } catch (error) {
       let errorMessage = 'Failed to do something exceptional';
